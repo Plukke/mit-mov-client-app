@@ -1,28 +1,28 @@
 import React from 'react';
-import { ScreenContainer } from '@draftbit/ui';
+import { ScreenContainer, withTheme } from '@draftbit/ui';
 import { KeyboardAvoidingView, StyleSheet } from 'react-native';
-import SignUpForm from '../../components/Login/SignUpForm';
+import SecretCodeForm from '../../components/Login/SecretCodeForm';
 
-const MagicLinkLoginScreen = () => {
+const SecretCodeScreen = () => {
   return (
     <ScreenContainer scrollable={true} hasSafeArea={true}>
       <KeyboardAvoidingView
-        style={styles.KeyboardAvoidingViewl4}
+        style={styles.KeyboardAvoidingView_4B}
         enabled={true}
         behavior='padding'
         keyboardVerticalOffset={60}
       >
-        <SignUpForm />
+        <SecretCodeForm />
       </KeyboardAvoidingView>
     </ScreenContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  KeyboardAvoidingViewl4: {
+  KeyboardAvoidingView_4B: {
     flexGrow: 1,
     justifyContent: 'space-between'
   }
 });
 
-export default MagicLinkLoginScreen;
+export default withTheme(SecretCodeScreen);

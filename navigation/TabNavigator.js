@@ -2,33 +2,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import FavoritesScreen from '../screens/Main/Favorites';
-import CouponsScreen from '../screens/Main/Coupons';
 import ProfileScreen from '../screens/Main/Profile';
-import ListProductsScreen from '../screens/Products/ListProducts';
-
-import ListOrdersScreen from '../screens/Orders/ListOrders';
+import ListVoiceRoomsScreen from '../screens/Rooms/ListVoiceRooms';
+import ListChatsScreen from '../screens/Rooms/ListChats';
 
 const Tab = createBottomTabNavigator();
 
 const TAB_SCREENS = {
-  ListProducts: {
+  Home: {
     title: 'Inicio',
-    component: ListProductsScreen
+    component: ListVoiceRoomsScreen
   },
-  Favorites: {
-    title: 'Favoritos',
-    component: FavoritesScreen
-  },
-  Orders: {
-    title: 'Pedidos',
-    component: ListOrdersScreen
-  },
-  Coupons: {
-    title: 'Cupones',
-    component: CouponsScreen
+  /**
+   * !Cambiar a lista de personas agregadas
+   */
+  Chats: {
+    title: 'Chats',
+    component: ListChatsScreen
   },
   Profile: {
     title: 'Perfil',
@@ -37,19 +29,11 @@ const TAB_SCREENS = {
 };
 const TabBarIcon = ({ color, size, route }) => {
   const icons = {
-    ListProducts: 'home-outline',
-    Favorites: 'heart-outline',
-    Orders: 'clipboard-outline',
-    Coupons: 'ticket-percent-outline',
-    Profile: 'account-outline'
+    Home: 'home-outline',
+    Chats: 'chatbubble-outline',
+    Profile: 'person-outline'
   };
-  return (
-    <MaterialCommunityIcons
-      name={icons[route.name]}
-      color={color}
-      size={size}
-    />
-  );
+  return <Ionicons name={icons[route.name]} color={color} size={size} />;
 };
 
 export default function TabNavigator() {
@@ -71,9 +55,7 @@ export default function TabNavigator() {
             key={name}
             name={name}
             getComponent={() => component}
-            options={{
-              title
-            }}
+            options={{ title }}
           />
         );
       })}

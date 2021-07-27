@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 import { Text, View, StyleSheet } from 'react-native';
 
-export default function DetailProduct({ route }) {
-  const { productId } = route.params;
+export default function VoiceRoomScreen({ route }) {
+  const { roomId } = route.params;
 
-  console.log('PRODUCT ID', productId);
+  console.log('ROOM ID', roomId);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Detail Product Screen</Text>
+      <Text style={styles.title}>Voice Room Screen</Text>
     </View>
   );
 }
@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
   }
 });
 
-DetailProduct.propTypes = {
+VoiceRoomScreen.propTypes = {
   route: PropTypes.shape({
     params: PropTypes.shape({
-      productId: PropTypes.string.isRequired
+      roomId: PropTypes.string.isRequired
     })
   })
 };

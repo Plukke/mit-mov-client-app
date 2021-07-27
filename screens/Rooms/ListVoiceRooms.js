@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 import { Text, View, StyleSheet, Button } from 'react-native';
 
-export default function ListProductsScreen({ navigation }) {
+export default function ListVoiceRoomsScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>List Products Screen</Text>
+      <Text style={styles.title}>Live Voice Rooms</Text>
       <Button
-        title='Detail Product'
+        title='Voice Room'
         onPress={() =>
-          navigation.navigate('DetailProduct', {
-            productId: 101
+          navigation.navigate('VoiceRoom', {
+            roomId: '205'
           })
         }
       />
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   }
 });
 
-ListProductsScreen.propTypes = {
+ListVoiceRoomsScreen.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired
   }).isRequired

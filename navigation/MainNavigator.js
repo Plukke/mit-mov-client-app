@@ -2,68 +2,35 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import React from 'react';
-
-import {
-  createStackNavigator,
-  HeaderBackButton
-} from '@react-navigation/stack';
-
-import DetailProduct from '../screens/Products/DetailProduct';
-import { getHeaderTitle } from '../lib/util';
-import ScheduleScreen from '../screens/Schedule';
-import AddressNavigator from './AddressNavigator';
-import DetailOrderScreen from '../screens/Orders/DetailOrder';
-import ReferralsScreen from '../screens/Main/Referrals';
-import PaymentNavigator from './PaymentNavigator';
+import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigator from './TabNavigator';
+import VoiceRoomScreen from '../screens/Rooms/VoiceRoom';
+import ChatRoomScreen from '../screens/Rooms/ChatRoom';
+import BackButton from '../components/common/BackButton';
 
 const Stack = createStackNavigator();
 
 const SCREENS = {
-  DetailProduct: {
-    title: 'Producto',
-    component: DetailProduct
+  /**
+   * ! Cambiar a Drawer para ver chat
+   */
+  VoiceRoom: {
+    title: 'Sala de voz',
+    component: VoiceRoomScreen,
+    headerShown: true
   },
-  DetailOrder: {
-    title: 'Orden',
-    component: DetailOrderScreen
-  },
-  Schedule: {
-    title: 'Agendar',
-    component: ScheduleScreen
-  },
-  Addresses: {
-    title: 'Mis direcciones',
-    component: AddressNavigator,
-    headerShown: false
-  },
-  Payments: {
-    title: 'Pagos',
-    component: PaymentNavigator,
-    headerShown: false
-  },
-  Referrals: {
-    title: 'Referidos',
-    component: ReferralsScreen
+  /**
+   * ! Cambiar al detalle del contacto
+   */
+  ChatRoom: {
+    title: 'Sala de chat',
+    component: ChatRoomScreen
   }
 };
 
-export default function MainNavigator({ navigation }) {
+function MainNavigator() {
   return (
-    <Stack.Navigator
-      initialRouteName='Tab'
-      mode='modal'
-      screenOptions={({ route }) => {
-        /**
-         * ? Se puede reemplazar con header para meter un componente
-         */
-        return {
-          headerTitle: getHeaderTitle(route),
-          headerTitleAlign: 'center'
-          // headerRight: ScheduleButton
-        };
-      }}
-    >
+    <Stack.Navigator initialRouteName='Tab' mode='modal'>
       <Stack.Screen name='Tab' component={TabNavigator} />
       {Object.keys(SCREENS).map((name) => {
         const { title, component, headerShown = true } = SCREENS[name];
@@ -75,12 +42,12 @@ export default function MainNavigator({ navigation }) {
             options={{
               title,
               headerShown,
-              headerLeft: (props) => (
-                <HeaderBackButton
-                  {...props}
-                  onPress={() => navigation.goBack()}
-                />
-              )
+              headerLeft: () => <BackButton />,
+              headerTransparent: true,
+              headerStyle: {
+                borderBottomColor: 'transparent',
+                borderBottomWidth: 0
+              }
             }}
           />
         );
@@ -88,3 +55,5 @@ export default function MainNavigator({ navigation }) {
     </Stack.Navigator>
   );
 }
+
+export default MainNavigator;

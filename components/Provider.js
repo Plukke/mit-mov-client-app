@@ -18,5 +18,5 @@ export const useStore = (selector, eqFn) => {
 
 StoreProvider.propTypes = {
   children: PropTypes.element.isRequired,
-  store: PropTypes.object
+  store: PropTypes.func
 };
