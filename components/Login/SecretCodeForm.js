@@ -69,7 +69,7 @@ function SecretCodeForm(props) {
             { color: theme.colors.strong }
           ]}
         >
-          Confirmar cuenta
+          Verificar código
         </Text>
 
         <Text
@@ -86,7 +86,7 @@ function SecretCodeForm(props) {
         <Input
           style={styles.TextFieldjR}
           label='Código de confirmación'
-          keyboardType='numeric'
+          keyboardType='phone-pad'
           name='code'
           value={formik.values['code']}
           error={formik.errors['code'] && formik.touched['code']}
@@ -96,7 +96,7 @@ function SecretCodeForm(props) {
               : ''
           }
           formik={formik}
-          parse={(value) => value.substring(0, 6)}
+          parse={(value) => `${value}`.substring(0, 6)}
         />
       </Container>
 
@@ -112,7 +112,7 @@ function SecretCodeForm(props) {
           onPress={formik.handleSubmit}
           loading={loading}
         >
-          Confirmar cuenta
+          Confirmar
         </Button>
 
         <Text

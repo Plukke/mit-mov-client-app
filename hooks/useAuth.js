@@ -37,8 +37,7 @@ export default function useAuth() {
 
       if (isAuth) {
         try {
-          const user = await Auth.currentAuthenticatedUser();
-          console.log('authenticated user', user);
+          handleSignIn(setUser);
         } catch (error) {
           console.log('check & getUser exception', error);
         }

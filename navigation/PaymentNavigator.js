@@ -1,24 +1,31 @@
 /* eslint-disable react/jsx-key */
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import NewPaymentScreen from '../screens/Payments/NewPayment';
-import ListPaymentsScreen from '../screens/Payments/ListPayments';
+import ListContactsScreen from '../screens/Contacts/ListContactsScreen';
+import DetailContactScreen from '../screens/Contacts/DetailContact';
 const Stack = createStackNavigator();
 
 const SCREENS = {
   ListPayments: {
     title: 'Metodo de pago',
-    component: ListPaymentsScreen
+    component: ListContactsScreen
   },
   NewPayment: {
     title: 'Agregar pago',
-    component: NewPaymentScreen
+    component: DetailContactScreen
   }
 };
 
 export default function PaymentNavigator() {
   return (
-    <Stack.Navigator mode='card'>
+    <Stack.Navigator
+      mode='card'
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: 'blue'
+        }
+      }}
+    >
       {Object.keys(SCREENS).map((name) => {
         const { title, component } = SCREENS[name];
         return (

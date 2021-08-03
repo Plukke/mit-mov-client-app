@@ -1,6 +1,7 @@
 import React from 'react';
 import create from 'zustand';
 import authStore, { authInitialState } from './auth';
+import locationStore, { locationInitialState } from './location';
 import navigationStore, { navigationInitialState } from './navigation';
 
 let store;
@@ -11,7 +12,11 @@ function initStore(preloadedState = {}) {
       set,
       preloadedState?.navigationStore ?? navigationInitialState
     ),
-    authStore: authStore(set, preloadedState?.authStore ?? authInitialState)
+    authStore: authStore(set, preloadedState?.authStore ?? authInitialState),
+    locationStore: locationStore(
+      set,
+      preloadedState?.locationStore ?? locationInitialState
+    )
   }));
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScreenContainer } from '@draftbit/ui';
-import { KeyboardAvoidingView, StyleSheet } from 'react-native';
+import { KeyboardAvoidingView, StyleSheet, Platform } from 'react-native';
 import SignUpForm from '../../components/Login/SignUpForm';
 
 const MagicLinkLoginScreen = () => {
@@ -9,7 +9,7 @@ const MagicLinkLoginScreen = () => {
       <KeyboardAvoidingView
         style={styles.KeyboardAvoidingViewl4}
         enabled={true}
-        behavior='padding'
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         keyboardVerticalOffset={60}
       >
         <SignUpForm />

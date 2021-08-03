@@ -53,8 +53,8 @@ function SignInForm(props) {
     }
   });
 
-  const formatPhone = (string) => {
-    const digits = parseDigits(string);
+  const formatPhone = (value) => {
+    const digits = parseDigits(`${value}`);
     return new AsYouType('MX').input(`${digits}`);
   };
 
@@ -75,6 +75,7 @@ function SignInForm(props) {
         leftIconMode='inset'
         leftIconName='MaterialCommunityIcons/phone'
         parse={formatPhone}
+        placeholder='55 0011 3344'
       />
       <ButtonSolid
         onPress={formik.handleSubmit}

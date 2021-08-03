@@ -2,25 +2,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import { withTheme } from '@draftbit/ui';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ProfileScreen from '../screens/Main/Profile';
-import ListVoiceRoomsScreen from '../screens/Rooms/ListVoiceRooms';
-import ListChatsScreen from '../screens/Rooms/ListChats';
+import ListContactsScreen from '../screens/Contacts/ListContactsScreen';
+import Home from '../screens/Main/Home';
 
 const Tab = createBottomTabNavigator();
 
 const TAB_SCREENS = {
   Home: {
     title: 'Inicio',
-    component: ListVoiceRoomsScreen
+    component: Home
   },
   /**
    * !Cambiar a lista de personas agregadas
    */
-  Chats: {
-    title: 'Chats',
-    component: ListChatsScreen
+  Contacts: {
+    title: 'Contactos',
+    component: ListContactsScreen
   },
   Profile: {
     title: 'Perfil',
@@ -29,14 +31,14 @@ const TAB_SCREENS = {
 };
 const TabBarIcon = ({ color, size, route }) => {
   const icons = {
-    Home: 'home-outline',
-    Chats: 'chatbubble-outline',
-    Profile: 'person-outline'
+    Home: 'home',
+    Contacts: 'list-alt',
+    Profile: 'person'
   };
-  return <Ionicons name={icons[route.name]} color={color} size={size} />;
+  return <MaterialIcons name={icons[route.name]} color={color} size={size} />;
 };
 
-export default function TabNavigator() {
+function TabNavigator({ theme }) {
   return (
     <Tab.Navigator
       initialRouteName='ListProducts'
@@ -47,6 +49,9 @@ export default function TabNavigator() {
           tabBarVisible
         };
       }}
+      tabBarOptions={{
+        activeTintColor: theme.colors.primary
+      }}
     >
       {Object.keys(TAB_SCREENS).map((name) => {
         const { title, component } = TAB_SCREENS[name];
@@ -55,7 +60,10 @@ export default function TabNavigator() {
             key={name}
             name={name}
             getComponent={() => component}
-            options={{ title }}
+            options={{
+              title,
+              headerShown: false
+            }}
           />
         );
       })}
@@ -68,3 +76,9 @@ TabBarIcon.propTypes = {
   size: PropTypes.number.isRequired,
   route: PropTypes.object
 };
+
+TabNavigator.propTypes = {
+  theme: PropTypes.object
+};
+
+export default withTheme(TabNavigator);

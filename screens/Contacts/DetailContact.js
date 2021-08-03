@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Text, View, StyleSheet } from 'react-native';
 
-export default function ChatRoomScreen({ route }) {
+export default function DetailContactScreen({ route }) {
   const { roomId } = route.params;
 
   console.log('ROOM ID', roomId);
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   }
 });
 
-ChatRoomScreen.propTypes = {
+DetailContactScreen.propTypes = {
   route: PropTypes.shape({
     params: PropTypes.shape({
       roomId: PropTypes.string.isRequired

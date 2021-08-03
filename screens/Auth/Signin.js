@@ -37,7 +37,7 @@ const SigninScreen = (props) => {
               }
             ]}
           >
-            {'Bienvenido a CERO'}
+            {'Bienvenido a mit~mov'}
           </Text>
           <Text
             style={[
@@ -48,7 +48,7 @@ const SigninScreen = (props) => {
               }
             ]}
           >
-            {'¡No más desperdicio!'}
+            {'¡Diviertete mientras manejas!'}
           </Text>
         </View>
 

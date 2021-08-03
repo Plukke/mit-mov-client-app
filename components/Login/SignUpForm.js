@@ -29,9 +29,9 @@ function SignUpForm(props) {
       const username = parsePhoneNumberFromString(
         `+52${values.phone_number}`
       ).number;
-
+      const name = values.name.trim();
       try {
-        await signUp(username, values.name);
+        await signUp(username, name);
       } catch (error) {
         console.log(error);
         setLoading(false);
@@ -117,6 +117,7 @@ function SignUpForm(props) {
           leftIconMode='inset'
           leftIconName='MaterialCommunityIcons/phone'
           parse={formatPhone}
+          placeholder='55 0011 3344'
         />
       </Container>
 

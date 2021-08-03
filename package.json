@@ -10,6 +10,7 @@
     "eslint": "eslint"
   },
   "dependencies": {
+    "@aws-sdk/client-location": "^3.23.0",
     "@draftbit/ui": "^40.36.2",
     "@react-native-async-storage/async-storage": "^1.15.4",
     "@react-native-community/datetimepicker": "^3.5.0",
@@ -22,9 +23,13 @@
     "aws-amplify": "^4.0.3",
     "aws-amplify-react-native": "^5.0.1",
     "expo": "~41.0.1",
+    "expo-intent-launcher": "~9.0.0",
+    "expo-location": "~12.0.4",
     "expo-splash-screen": "^0.10.2",
     "expo-status-bar": "~1.0.4",
+    "expo-task-manager": "~9.1.0",
     "formik": "^2.2.8",
+    "geolib": "^3.3.1",
     "libphonenumber-js": "^1.9.19",
     "nanoid": "^3.1.23",
     "react": "16.13.1",

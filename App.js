@@ -11,6 +11,7 @@ import Navigation from './navigation';
 import { StoreProvider } from './components/Provider';
 import { useHydrate } from './stores';
 import config from './aws-exports';
+
 // import { USER_POOL_ID, USER_POOL_WEB_CLIENT } from '@env';
 
 Amplify.configure(config);
@@ -35,7 +36,6 @@ export default function App() {
   const store = useHydrate();
 
   if (!isLoadingComplete) return null;
-  console.log('theme', theme);
   return (
     <Provider theme={theme}>
       <StoreProvider store={store}>

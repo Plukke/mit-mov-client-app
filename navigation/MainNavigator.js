@@ -5,8 +5,8 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigator from './TabNavigator';
 import VoiceRoomScreen from '../screens/Rooms/VoiceRoom';
-import ChatRoomScreen from '../screens/Rooms/ChatRoom';
 import BackButton from '../components/common/BackButton';
+import DetailContactScreen from '../screens/Contacts/DetailContact';
 
 const Stack = createStackNavigator();
 
@@ -22,16 +22,20 @@ const SCREENS = {
   /**
    * ! Cambiar al detalle del contacto
    */
-  ChatRoom: {
-    title: 'Sala de chat',
-    component: ChatRoomScreen
+  DetailContact: {
+    title: 'Detalle del contacto',
+    component: DetailContactScreen
   }
 };
 
 function MainNavigator() {
   return (
     <Stack.Navigator initialRouteName='Tab' mode='modal'>
-      <Stack.Screen name='Tab' component={TabNavigator} />
+      <Stack.Screen
+        name='Tab'
+        component={TabNavigator}
+        options={{ headerShown: false }}
+      />
       {Object.keys(SCREENS).map((name) => {
         const { title, component, headerShown = true } = SCREENS[name];
         return (
@@ -43,11 +47,7 @@ function MainNavigator() {
               title,
               headerShown,
               headerLeft: () => <BackButton />,
-              headerTransparent: true,
-              headerStyle: {
-                borderBottomColor: 'transparent',
-                borderBottomWidth: 0
-              }
+              headerTransparent: true
             }}
           />
         );
